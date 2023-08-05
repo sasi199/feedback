@@ -12,7 +12,7 @@ const Training = () => {
   return (
     <div>
       <div className='heading'>
-        <h4>11. What aspects of the course (Training) could be improved?</h4>
+        <h4>10. What aspects of the course (Training) could be improved?</h4>
         <div className="message-box">
           <textarea
             className="message-input"
@@ -22,7 +22,7 @@ const Training = () => {
       </div>
 
       <div className='heading'>
-        <h4>12. Did the course meet your expectation? Please provide details.</h4>
+        <h4>11. Did the course meet your expectation? Please provide details.</h4>
         <div className="message-box">
           <textarea
             className="message-input"
@@ -32,7 +32,7 @@ const Training = () => {
       </div>
 
       <div className='heading'>
-        <h4>13. How likely are you to recommend this course to others? 1(Not Likely) -5(Very Likely)</h4>
+        <h4>12. How likely are you to recommend this course to others? 1(Not Likely) -5(Very Likely)</h4>
         <div className="button-container">
   <label className={`recommend-option ${recommendation === 'Not Likely' ? 'selected' : ''}`}>
     <input
@@ -89,7 +89,7 @@ const Training = () => {
       </div>
 
       <div className='heading'>
-        <h4>14. Any additional comments or suggestions.</h4>
+        <h4>13. Any additional comments or suggestions.</h4>
         <div className="message-box">
           <textarea
             className="message-input"

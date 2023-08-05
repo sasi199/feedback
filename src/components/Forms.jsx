@@ -1,14 +1,6 @@
-
-
-
 import React, { useState } from 'react';
-import './Form.css';
-import Training from './Training';
-import Button from './Button';
-import FormComponent from './Form';
-
+import './Forms.css';
 const Forms = () => {
- 
     const topics = [
         '1. Overall satisfaction with the course:',
         "2. Instructor's knowledge and expertise:",
@@ -17,49 +9,134 @@ const Forms = () => {
         '5. Effectiveness of practical exercises and projects:',
         '6. Quality of the learning environment (online/offline):',
         '7. Availability of support and guidance:',
-        '8. Organization and structure of the course:',
-        '9. Communication and feedback from the instructor:',
-        '10. How would you rate your overall learning experience? (1-5):',
+        '8. Communication and feedback from the instructor:',
+        '9. How would you rate your overall learning experience? (1-5):',
       ];
-
 
   const options = ['Below Average', 'Average', 'Good', 'Very Good', 'Excellent'];
 
+  const instructorNames = ['Mrs. Geethara Gowri', 'Mr. Vimalesh', 'Ms. Lenora Smauel', 'Mr. Gajendra Babu'];
+
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
+  const [selectedButtons, setSelectedButtons] = useState(Array(topics.length).fill(null));
+  const [recommendation, setRecommendation] = useState(null); // State for recommendation
 
+  const handleButtonClick = (index, value) => {
+    const updatedButtons = [...selectedButtons];
+    updatedButtons[index] = value;
+    setSelectedButtons(updatedButtons);
+  };
+
+  
   const handleSubmit = (event) => {
-    event.preventDefault(); // Prevent default behavior of form submission
+    event.preventDefault();
 
-    // Check if the form is valid based on HTML5 validation
-    if (!event.target.checkValidity()) {
-      setFormSubmitted(true);
+    const paperName = event.target.paperName.value;
+    const selectedInstructor = event.target.instructor.value;
+    const studentName = event.target.studentName.value;
+    const batchNumber = event.target.batchNumber.value;
+
+    if (!paperName || !selectedInstructor || !studentName || !batchNumber || selectedButtons.includes(null) || !recommendation) {
+      setErrorMsg('Please fill out all the required fields and provide feedback for all topics.');
     } else {
-      setFormSubmitted(false);
+      setErrorMsg('');
+      setFormSubmitted(true);
+      // Simulating a submission with an alert
       alert('Feedback submitted successfully!');
-      event.target.reset(); // Clear form fields
+      event.target.reset();
+      setFormSubmitted(false);
+      setSelectedButtons(Array(topics.length).fill(null));
+      setRecommendation(null);
     }
   };
 
   return (
     <div className="form-model">
       <form onSubmit={handleSubmit}>
-        {/* Include your FormComponent */}
-        <FormComponent />
+        <table className="form-table">
+          <tbody>
+            <tr>
+              <td className="form-label">Paper Name:</td>
+              <td><input type="text" name="paperName" className="form-input" /></td>
+            </tr>
+            <tr>
+              <td className="form-label">Instructor Name:</td>
+              <td>
+                <select name="instructor" className="form-select">
+                  <option value="">Select an instructor</option>
+                  {instructorNames.map((name, index) => (
+                    <option key={index} value={name}>{name}</option>
+                  ))}
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td className="form-label">Student Name:</td>
+              <td><input type="text" name="studentName" className="form-input" /></td>
+            </tr>
+            <tr>
+              <td className="form-label">Batch Number:</td>
+              <td><input type="text" name="batchNumber" className="form-input" /></td>
+            </tr>
+          </tbody>
+        </table>
 
-        {/* Map through topics and render Button components */}
         {topics.map((topic, index) => (
-          <Button key={index} topic={topic} options={options} />
+          <div className="button-heading" key={index}>
+            <h4>{topic}</h4>
+            <div className="button-container">
+              {options.map((option, optionIndex) => (
+                <button
+                  key={optionIndex}
+                  className={`button ${selectedButtons[index] === option && 'selected'}`}
+                  onClick={() => handleButtonClick(index, option)}
+                >
+                  {option}
+                </button>
+              ))}
+            </div>
+          </div>
         ))}
 
-        {/* Include your Training component */}
-        <Training />
+        <div className='heading'>
+          <h4>10. What aspects of the course (Training) could be improved?</h4>
+          <div className="message-box">
+            <textarea
+              className="message-input"
+              rows="4"
+            ></textarea>
+          </div>
+        </div>
 
-        {/* Display the warning message if formSubmitted is true */}
-        {formSubmitted && (
-          <p className="warning-message">Please fill out all fields before submitting.</p>
-        )}
+        <div className='heading'>
+          <h4>11. Did the course meet your expectation? Please provide details.</h4>
+          <div className="message-box">
+            <textarea
+              className="message-input"
+              rows="4"
+            ></textarea>
+          </div>
+        </div>
 
-        {/* Submit Button */}
+        <div className='heading'>
+          <h4>12. Any additional comments or suggestions.</h4>
+          <div className="message-box">
+            <textarea
+              className="message-input"
+              rows="4"
+              placeholder="Comments..."
+            ></textarea>
+          </div>
+        </div>
+
+        <p className='para'>
+          Thank you for taking the time to complete this feedback form. Your feedback is highly appreciated and will help us enhance our future course offerings.
+        </p>
+
+        {errorMsg && <p className="error-message">{errorMsg}</p>}
+        {formSubmitted && <p className="success-message">Feedback submitted successfully!</p>}
+
         <button type="submit" className="submit-button">
           Submit Feedback
         </button>
@@ -69,4 +146,3 @@ const Forms = () => {
 };
 
 export default Forms;
-
