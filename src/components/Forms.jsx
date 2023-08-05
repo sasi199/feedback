@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Forms.css';
+import StarRating from './StarRating';
 const Forms = () => {
     const topics = [
         '1. Overall satisfaction with the course:',
@@ -13,31 +14,34 @@ const Forms = () => {
         '9. How would you rate your overall learning experience? (1-5):',
       ];
 
-  const options = ['Below Average', 'Average', 'Good', 'Very Good', 'Excellent'];
+     
 
   const instructorNames = ['Mrs. Geethara Gowri', 'Mr. Vimalesh', 'Ms. Lenora Smauel', 'Mr. Gajendra Babu'];
+  const courseNames = ['Digital Marketing', 'Full Stack Web Development'];
 
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
-  const [selectedButtons, setSelectedButtons] = useState(Array(topics.length).fill(null));
+  const [ratings, setRatings] = useState(Array(topics.length).fill(0));
   const [recommendation, setRecommendation] = useState(null); // State for recommendation
 
-  const handleButtonClick = (index, value) => {
-    const updatedButtons = [...selectedButtons];
-    updatedButtons[index] = value;
-    setSelectedButtons(updatedButtons);
+  const handleRatingChange = (index, value) => {
+    const updatedRatings = [...ratings];
+    updatedRatings[index] = value;
+    setRatings(updatedRatings);
   };
+ 
 
   
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    const courseName = event.target.courseName.value;
     const paperName = event.target.paperName.value;
     const selectedInstructor = event.target.instructor.value;
     const studentName = event.target.studentName.value;
     const batchNumber = event.target.batchNumber.value;
+  
 
-    if (!paperName || !selectedInstructor || !studentName || !batchNumber || selectedButtons.includes(null) || !recommendation) {
+    if (!courseName || !paperName || !selectedInstructor || !studentName || !batchNumber ||  ratings.includes(0) || !recommendation) {
       setErrorMsg('Please fill out all the required fields and provide feedback for all topics.');
     } else {
       setErrorMsg('');
@@ -46,7 +50,6 @@ const Forms = () => {
       alert('Feedback submitted successfully!');
       event.target.reset();
       setFormSubmitted(false);
-      setSelectedButtons(Array(topics.length).fill(null));
       setRecommendation(null);
     }
   };
@@ -56,6 +59,16 @@ const Forms = () => {
       <form onSubmit={handleSubmit}>
         <table className="form-table">
           <tbody>
+          <tr>
+              <td className="form-label">Course Name:</td>
+              <select name="courseName" className="form-select">
+                                    <option value="">Select a course</option>
+                                    {courseNames.map((course, index) => (
+                                        <option key={index} value={course}>
+                                            {course}
+                                        </option>
+                                    ))}
+                                </select></tr>
             <tr>
               <td className="form-label">Paper Name:</td>
               <td><input type="text" name="paperName" className="form-input" /></td>
@@ -83,21 +96,11 @@ const Forms = () => {
         </table>
 
         {topics.map((topic, index) => (
-          <div className="button-heading" key={index}>
-            <h4>{topic}</h4>
-            <div className="button-container">
-              {options.map((option, optionIndex) => (
-                <button
-                  key={optionIndex}
-                  className={`button ${selectedButtons[index] === option && 'selected'}`}
-                  onClick={() => handleButtonClick(index, option)}
-                >
-                  {option}
-                </button>
-              ))}
-            </div>
-          </div>
-        ))}
+                            <div className={`topic-container ${index === topics.length - 1 ? 'star-rating-bottom' : ''}`} key={index}>
+                                <h4 className="heading-text">{topic}</h4>
+                                <StarRating value={ratings[index]} onChange={(value) => handleRatingChange(index, value)} />
+                            </div>
+                        ))}
 
         <div className='heading'>
           <h4>10. What aspects of the course (Training) could be improved?</h4>

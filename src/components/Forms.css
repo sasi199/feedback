@@ -50,29 +50,8 @@
     margin: 20px auto; /* Center the button container and add space around it */
   }
   
-  .button {
-    padding: 10px 20px;
-    margin: 10px; /* Add space between the buttons */
-    font-size: 16px;
-    color: #fff;
-    background-color: #8b1746;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
   
-  .button:hover {
-    background-color: #8b1746;
-  }
   
-  .button:focus {
-    outline: none;
-  }
-  
-  .button.selected {
-    background-color: #EAE90D;
-    color: black;
-  }
   .submit-button {
     margin-top: 20px;
     padding: 10px 20px;
@@ -92,4 +71,6 @@
     color: green;
     margin-top: 10px;
   }
-  
+  .heading{
+    margin: auto;
+  }
