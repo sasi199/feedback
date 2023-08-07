@@ -1,8 +1,9 @@
 import React from 'react';
 import logo from './image/logo.jpeg';
 import './Home.css';
-import Forms from './Forms';
+
 import Footer from './Footer';
+import FeedbackForm from './FeedbackForm';
 
 const Home = () => {
   return (
@@ -15,7 +16,7 @@ const Home = () => {
       </p>
       <h4 className="course-name">Course Name: <span>Digital Marketing Course</span></h4>
       {/* Include the Forms component */}
-      <Forms />
+    <FeedbackForm />
       <Footer />
     </div>
   );

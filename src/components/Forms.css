@@ -1,76 +1,88 @@
 /* Forms.css */
-.form-model {
-    border: 2px solid #ccc;
-    padding: 20px;
-    margin-top: 20px;
-    max-width: 1000px;
-    margin: 0 auto;
-    background-color: #fff;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .form-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .form-label {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    padding: 10px;
-  }
-  
-  .form-input,
-  .form-select {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
-  }
-  
-  .form-input:focus,
-  .form-select:focus {
-    outline: none;
-    border-color: #8b1746;
-    box-shadow: 0px 0px 5px rgba(183, 47, 91, 0.5);
-  }
-  
-  .button-heading {
-    margin: 50px;
-  }
-  
-  .button-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap; /* Add this property to wrap buttons to the next line if needed */
-    max-width: 1000px; /* Adjust the width to match the form width */
-    margin: 20px auto; /* Center the button container and add space around it */
-  }
-  
-  
-  
-  .submit-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #8b1746;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .error-message {
-    color: red;
-    margin-top: 10px;
-  }
-  
-  .success-message {
-    color: green;
-    margin-top: 10px;
-  }
-  .heading{
-    margin: auto;
-  }
+
+/* Styles for the feedback form container */
+.feedback-form {
+  border: 2px solid #ccc;
+  padding: 20px;
+  margin-top: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: #fff;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for the form table */
+.form-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Styles for form labels */
+.form-label {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  padding: 10px;
+}
+
+/* Styles for form inputs and selects */
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* Styles for focused form inputs and selects */
+.form-input:focus,
+.form-select:focus {
+  outline: none;
+  border-color: #8b1746;
+  box-shadow: 0px 0px 5px rgba(183, 47, 91, 0.5);
+}
+
+/* Styles for submit button */
+.submit-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #8b1746;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Styles for error messages */
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
+
+/* Styles for success messages */
+.success-message {
+  color: green;
+  margin-top: 10px;
+}
+
+/* Additional styles for headings and containers */
+.heading {
+  margin: auto;
+}
+
+/* Styles for message boxes (textareas) */
+.message-box {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+/* Styles for paragraph */
+.para {
+  font-size: 14px;
+  color: #555;
+  margin-top: 10px;
+}

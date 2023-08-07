@@ -11,7 +11,7 @@ const Forms = () => {
         '6. Quality of the learning environment (online/offline):',
         '7. Availability of support and guidance:',
         '8. Communication and feedback from the instructor:',
-        '9. How would you rate your overall learning experience? (1-5):',
+        '9. How would you rate your overall learning experience?',
       ];
 
      
